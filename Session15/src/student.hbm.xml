@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="co.edureka.Student" table="STUDENT">
+      <id name="roll" column="ROLL">
+         <generator class="increment"/>
+      </id>
+      <property name="name" column="NAME" type="string"/>
+      <property name="std" column="STD" type="int"/>
+      <property name="address" column="ADDRESS" type="string"/>
+      <property name="age" column="AGE" type="int"/>
+   </class>
+</hibernate-mapping>
