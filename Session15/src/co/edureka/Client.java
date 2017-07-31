@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
@@ -15,7 +16,7 @@ public class Client {
 
 	public static void main(String[] args) {
 		
-		Student s1 = new Student();
+		/*Student s1 = new Student();
 		s1.setRoll(1);
 		s1.setName("John");
 		s1.setAge(20);
@@ -24,12 +25,14 @@ public class Client {
 		
 		//System.out.println(s1);
 		Student s2 = new Student(0,"Jack",10,"Some Address",15);
-		Student s3 = new Student(0,"Joe",10,"Eastern Shores",15);
+		Student s3 = new Student(0,"Joe",10,"Eastern Shores",15);*/
 		
 		// Persist the Object in Table
 		// Write Hibernate Code (Link the jar files Hibernate and Type4 Driver)
 		
 		Configuration config = null;
+		//AnnotationConfiguration config = null;
+		
 		SessionFactory factory = null;
 		Session session = null;
 		Transaction transaction = null;
@@ -40,7 +43,10 @@ public class Client {
 			config.configure(); //Parse hibernate.cfg.xml file
 			//config.configure(somename.xml); //Parse somename.xml file
 			
-			factory = config.buildSessionFactory();
+			//config = new AnnotationConfiguration();
+			//config.configure();
+			
+			factory = config.buildSessionFactory();// 1 SF can have multiple sessions.
 			session = factory.openSession();
 			
 			transaction = session.beginTransaction();
@@ -82,6 +88,32 @@ public class Client {
 			// error
 			//Student s = (Student)session.get(Student.class, "John");
 			//System.out.println(s);
+			
+			/*for(int i=1;i<=100;i++){
+				Student s = new Student(0, "Student "+i, i, "Address "+i, i);
+				session.save(s);
+			}*/
+			
+			/*User u1 = new User(0,"john@example.com","password123");
+			User u2 = new User(0,"jennie@example.com","jennie@123");
+			
+			session.save(u1);
+			session.save(u2);*/
+			
+			// Retrieve Data from Table
+			Student s1 = (Student) session.get(Student.class, 3);
+			Student s2 = (Student) session.get(Student.class, 10);
+			
+			Student s3 = (Student) session.get(Student.class, 3);
+			Student s4 = (Student) session.get(Student.class, 10);
+			Student s5 = (Student) session.get(Student.class, 10);
+			
+			System.out.println(s1);
+			System.out.println(s2);
+			System.out.println(s3);
+			System.out.println(s4);
+			System.out.println(s5);
+			
 			
 			transaction.commit();
 			
