@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+   <!-- <bean id="e2" class="co.edureka.Employee" scope="prototype"> -->
+  <!--  <bean id="e2" class="co.edureka.Employee" init-method="myInit" destroy-method="myDestroy">
+       <property name="eid" value="102"/>
+       <property name="name" value="Jennie Jackson"/>
+       <property name="email" value="jennie@example.com"/>
+       <property name="age" value="25"/>
+       <property name="address" value="Country Homes"/>
+   </bean>
+   
+   <bean class="co.edureka.PostProcessor"/> -->
+   
+   <!-- <bean id="e3" class="co.edureka.Employee">
+       <property name="eid" value="103"/>
+       <property name="name" value="George"/>
+       <property name="email" value="george@example.com"/>
+       <property name="age" value="31"/>
+       <property name="address" value="Country Homes North"/>
+   </bean> -->
+   
+   <!-- <bean id="fRef" class="co.edureka.Father">
+       <property name="fname" value="John"/>
+       <property name="lname" value="Jackson"/>
+       <property name="money" value="25000"/>
+   </bean>
+   
+    <bean id="cRef" class="co.edureka.Child" parent="fRef">
+       <property name="fname" value="George"/>
+       <property name="vehicles" value="3"/>
+       <property name="homeAddress" value="Country Homes North"/>
+   </bean> -->
+   
+   <bean id="aRef" class="co.edureka.Address">
+       <property name="adrsLine" value="Country Homes"/>
+       <property name="city" value="Bengaluru"/>
+       <property name="zipCode" value="520001"/>
+   </bean>
+   
+    <bean id="sRef" class="co.edureka.Student">
+       <property name="roll" value="101"/>
+       <property name="name" value="John Watson"/>
+       <!-- <property name="adrs" ref="aRef"/> -->
+       <constructor-arg ref="aRef"/>
+   </bean>
+
+</beans>
